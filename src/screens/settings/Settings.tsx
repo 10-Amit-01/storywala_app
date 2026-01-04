@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useCallback } from 'react';
 import {
   ImageBackground,
   StyleSheet,
@@ -6,12 +6,13 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  BackHandler,
 } from 'react-native';
 
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { useHeaderHeight } from '@react-navigation/elements';
 
 interface SettingOptionProps {
@@ -37,14 +38,31 @@ function SettingOptions({ title, icon, isLast, onPress }: SettingOptionProps) {
 }
 
 export default function Settings() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const headerHeight = useHeaderHeight();
   useLayoutEffect(() => {
     navigation.setOptions({
       title: 'Settings',
       headerLeft: () => <View />,
     });
-  }, []);
+  }, [navigation]);
+
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        navigation.navigate('Home');
+        return true;
+      };
+
+      const subscription = BackHandler.addEventListener(
+        'hardwareBackPress',
+        onBackPress,
+      );
+
+      return () => subscription.remove();
+    }, [navigation]),
+  );
+
   return (
     <ImageBackground
       source={require('../../assets/images/bg-effect.png')}

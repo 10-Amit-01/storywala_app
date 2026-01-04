@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import Feather from 'react-native-vector-icons/Feather';
 import {
+  BackHandler,
   Image,
   ImageBackground,
   Modal,
@@ -45,6 +46,20 @@ export default function Profile() {
       ),
     });
   }, []);
+
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      () => {
+        navigation.goBack();
+        return true;
+      },
+    );
+    return () => {
+      backHandler.remove();
+    };
+  }, []);
+
   return (
     <ImageBackground
       source={require('../../assets/images/bg-effect.png')}
