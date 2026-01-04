@@ -1,4 +1,10 @@
 import {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from 'react';
+import {
   ImageBackground,
   StyleSheet,
   ScrollView,
@@ -8,12 +14,6 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-} from 'react';
 import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';

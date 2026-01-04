@@ -19,7 +19,7 @@ const USERS = [
   { id: 1, name: 'Anush', avatar: require('../../assets/images/user1.png') },
   {
     id: 2,
-    name: 'kanika',
+    name: 'Kanika',
     avatar: require('../../assets/images/user2.png'),
   },
 ];

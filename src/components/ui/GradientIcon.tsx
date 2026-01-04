@@ -1,10 +1,10 @@
+import React from 'react';
+import { Image, ImageProps } from 'react-native';
 import MaskedView from '@react-native-masked-view/masked-view';
 import {
   LinearGradient,
   LinearGradientProps,
 } from 'react-native-linear-gradient';
-import { Image, ImageProps } from 'react-native';
-import React from 'react';
 
 type GradientIconProps = ImageProps & {
   colors: LinearGradientProps['colors'];

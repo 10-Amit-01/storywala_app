@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import { ImageBackground, Text, View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useState } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { theme } from '../theme';

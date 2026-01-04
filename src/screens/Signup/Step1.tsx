@@ -1,5 +1,5 @@
-import { View, Text, Modal, Pressable, StyleSheet, Image } from 'react-native';
 import React, { useState } from 'react';
+import { View, Text, Modal, Pressable, StyleSheet, Image } from 'react-native';
 
 import IconInput from '../../components/ui/IconInput';
 import { theme } from '../../theme';

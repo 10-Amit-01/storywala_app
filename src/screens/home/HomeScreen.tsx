@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   ImageBackground,
   StyleSheet,
@@ -8,13 +9,12 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import { useEffect } from 'react';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
-import { GlobalStyles } from '../../styles/GlobalStyles';
-import StoryCard from '../../components/StoryCard';
 import { theme } from '../../theme';
+import StoryCard from '../../components/StoryCard';
 import IconInput from '../../components/ui/IconInput';
+import { GlobalStyles } from '../../styles/GlobalStyles';
 
 interface HomeProps {
   name?: string;

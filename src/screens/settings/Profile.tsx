@@ -1,6 +1,4 @@
-import { useNavigation } from '@react-navigation/native';
 import { useEffect, useLayoutEffect, useState } from 'react';
-import Feather from 'react-native-vector-icons/Feather';
 import {
   BackHandler,
   Image,
@@ -13,13 +11,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Feather from 'react-native-vector-icons/Feather';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 import IconInput from '../../components/ui/IconInput';
 import { GlobalStyles } from '../../styles/GlobalStyles';
 import DateInputNative from '../../components/DateInput';
-import { genderOptions } from '../Signup/Step1';
+import { genderOptions } from '../signup/Step1';
 import GradientButton from '../../components/ui/GradientButton';
 
 export default function Profile() {

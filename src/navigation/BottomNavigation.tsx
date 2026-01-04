@@ -1,13 +1,12 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useCallback } from 'react';
 import { Image } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
-import Home from '../screens/home/HomeScreen';
-import { useCallback } from 'react';
 import { RootStackParamList } from './types';
+import Home from '../screens/home/HomeScreen';
 import SettingNavigation from '../screens/settings/SettingNavigation';
-
 
 const Tab = createBottomTabNavigator();
 const USERS = [

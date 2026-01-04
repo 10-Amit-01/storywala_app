@@ -1,4 +1,11 @@
 import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
+import {
   View,
   StyleSheet,
   ImageBackground,
@@ -11,25 +18,18 @@ import {
   BackHandler,
   Keyboard,
 } from 'react-native';
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useHeaderHeight } from '@react-navigation/elements';
 import { useNavigation } from '@react-navigation/native';
+import { useHeaderHeight } from '@react-navigation/elements';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/types';
 
 import StepPhone from './Step1';
 import StepOtp from './Step2';
 import StepSelectUser from './Step3';
-import { GlobalStyles } from '../../styles/GlobalStyles';
-import GradientButton from '../../components/ui/GradientButton';
 import OtpTimer from '../../components/Timer';
+import { GlobalStyles } from '../../styles/GlobalStyles';
+import { RootStackParamList } from '../../navigation/types';
+import GradientButton from '../../components/ui/GradientButton';
 import CustomBackButton from '../../components/CustomBackButton';
 
 enum LoginStep {

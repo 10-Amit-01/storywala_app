@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Text,
   ViewStyle,
@@ -6,7 +7,6 @@ import {
   StyleSheet,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import React from 'react';
 
 import { GlobalStyles } from '../../styles/GlobalStyles';
 import { colors } from '../../theme/colors';

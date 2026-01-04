@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Pressable,
   View,
@@ -10,7 +11,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import { colors } from '../../theme/colors';
 import GradientText from './GradientText';
 import { theme } from '../../theme';
-import React from 'react';
 
 interface OutlineGradientButtonProps {
   title: string;
