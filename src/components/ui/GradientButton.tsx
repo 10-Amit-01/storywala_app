@@ -6,11 +6,11 @@ import {
   StyleSheet,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import React from 'react';
 
 import { GlobalStyles } from '../../styles/GlobalStyles';
 import { colors } from '../../theme/colors';
 import { theme } from '../../theme';
-import React from 'react';
 
 interface GradientButtonProps {
   title: string;

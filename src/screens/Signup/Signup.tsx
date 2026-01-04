@@ -10,13 +10,11 @@ import {
 } from 'react-native';
 import {
   useState,
-  useLayoutEffect,
   useEffect,
   useCallback,
   useRef,
 } from 'react';
 import {
-  SafeAreaView,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -24,7 +22,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useHeaderHeight } from '@react-navigation/elements';
 
 import { RootStackParamList } from '../../navigation/types';
-
 import GradientButton from '../../components/ui/GradientButton';
 import CustomBackButton from '../../components/CustomBackButton';
 import Step1 from './Step1';

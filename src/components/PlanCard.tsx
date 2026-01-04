@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { theme } from '../theme';
 import React from 'react';
 
+import { theme } from '../theme';
 type Props = {
   title: string;
   price: string;

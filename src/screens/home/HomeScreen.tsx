@@ -75,6 +75,7 @@ export default function Home({ name }: HomeProps) {
             paddingBottom: tabBarHeight,
           },
         ]}
+        showsVerticalScrollIndicator={false}
       >
         <View style={styles.headingContainer}>
           <Text

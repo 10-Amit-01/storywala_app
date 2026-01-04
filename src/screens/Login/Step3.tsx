@@ -9,8 +9,8 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../navigation/types';
 
+import { RootStackParamList } from '../../navigation/types';
 import { colors } from '../../theme/colors';
 import { GlobalStyles } from '../../styles/GlobalStyles';
 import { theme } from '../../theme';

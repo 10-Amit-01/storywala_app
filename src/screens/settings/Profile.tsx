@@ -72,6 +72,7 @@ export default function Profile() {
               paddingBottom: tabBarHeight,
             },
           ]}
+          showsVerticalScrollIndicator={false}
         >
           <View style={styles.profileImageContainer}>
             <Image
@@ -117,7 +118,6 @@ export default function Profile() {
               value={phone}
               placeholder="+91 Phone Number"
               keyboardType="phone-pad"
-              editable={false} // Assuming uneditable as per lock icon
               childrenPos="right"
             />
 

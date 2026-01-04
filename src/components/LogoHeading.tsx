@@ -1,10 +1,10 @@
 import { Image, View, StyleSheet } from 'react-native';
+import React from 'react';
 
 import { GlobalStyles } from '../styles/GlobalStyles';
 import { colors } from '../theme/colors';
 import GradientText from './ui/GradientText';
 import { theme } from '../theme';
-import React from 'react';
 
 const LogoHeading = React.memo(function () {
   return (

@@ -11,7 +11,6 @@
     "android:release": "cd android && gradlew assembleRelease"
   },
   "dependencies": {
-    "@react-native-community/blur": "^4.4.1",
     "@react-native-community/datetimepicker": "^8.5.1",
     "@react-native-masked-view/masked-view": "^0.3.2",
     "@react-native/new-app-screen": "0.83.1",

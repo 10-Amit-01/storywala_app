@@ -1,13 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { RouteProp, useRoute } from '@react-navigation/native';
 
 import Home from '../screens/home/HomeScreen';
-import { RouteProp, useRoute } from '@react-navigation/native';
 import { useCallback } from 'react';
 import { RootStackParamList } from './types';
 import SettingNavigation from '../screens/settings/SettingNavigation';
 
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 const USERS = [
@@ -50,6 +50,7 @@ export default function HomeTabs() {
         },
         tabBarActiveTintColor: '#fff',
         tabBarInactiveTintColor: '#aaa',
+        tabBarHideOnKeyboard: true,
       }}
     >
       <Tab.Screen

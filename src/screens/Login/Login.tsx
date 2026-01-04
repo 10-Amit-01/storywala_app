@@ -9,6 +9,7 @@ import {
   NativeSyntheticEvent,
   TextInputKeyPressEventData,
   BackHandler,
+  Keyboard,
 } from 'react-native';
 import {
   useCallback,
@@ -139,14 +140,15 @@ const LoginScreen = () => {
       return;
     }
     console.log(otp);
+    Keyboard.dismiss();
     setError(false);
     setCurrentStep(LoginStep.USER_SELECTION);
   };
 
-  const handleUserSelect = (user: any) => {
+  const handleUserSelect = (user: any) => { 
     if (user.isAddNew) {
       console.log('Add new user flow');
-      return;
+      return; 
     }
     setSelectedUser(user);
     console.log('Selected user:', user);
