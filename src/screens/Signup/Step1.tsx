@@ -13,7 +13,7 @@ const genderIcons = {
   others: require('../../assets/icons/others-ic.png'),
 };
 
-const genderOptions = [
+export const genderOptions = [
   { label: 'Male', value: 'male', icon: genderIcons.male },
   { label: 'Female', value: 'female', icon: genderIcons.female },
   { label: 'Prefer Not to say', value: 'others', icon: genderIcons.others },

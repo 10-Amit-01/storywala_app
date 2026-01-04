@@ -39,16 +39,6 @@ const TopStories = [
     image: require('../../data/images/image-1.png'),
     heading: `Major Mooney's Comic`,
   },
-  {
-    key: 2,
-    image: require('../../data/images/image-2.png'),
-    heading: `Major Mooney's Comic`,
-  },
-  {
-    key: 3,
-    image: require('../../data/images/image-3.png'),
-    heading: `Major Mooney's Comic`,
-  },
 ];
 const RecentPlay = [
   {
@@ -88,63 +78,45 @@ export default function HomeContent({ name }) {
         />
       </View>
 
-      <View>
-        <FlatList
-          horizontal
-          data={catagories}
-          renderItem={({ item }) => {
-            if (item.id === 555) {
-              return (
-                <View style={styles.compassContainer}>
-                  <Image source={item.icon} />
-                </View>
-              );
-            }
-            return (
-              <View style={styles.catContainer}>
-                <Image source={item.icon} />
-                <Text style={[GlobalStyles.text, styles.catText]}>
-                  {item.label}
-                </Text>
-              </View>
-            );
-          }}
-          style={{ marginTop: 20, marginLeft: 22 }}
-        />
-      </View>
-
-      <View style={{ height: 250, marginHorizontal: 10, marginTop: 20 }}>
+      <View
+        style={{
+          height: 250,
+          marginHorizontal: 10,
+          marginTop: 20,
+          marginBottom: 50,
+        }}
+      >
         <Text
           style={[
             GlobalStyles.heading,
             { textAlign: 'left', marginLeft: 10, fontSize: 22 },
           ]}
         >
-          Top Rated Stories
+          Today's Story
         </Text>
-        <FlatList
-          horizontal
-          data={TopStories}
-          renderItem={({ item }) => (
-            <StoryCard
-              data={item}
-              icon={require('../../assets/icons/gradient-play-ic.png')}
-              cardStyle={{
-                height: 190,
-                width: 200,
-                marginHorizontal: 10,
-                marginTop: 5,
-              }}
-              textStyle={styles.storyTitle}
-            />
-          )}
+        <StoryCard
+          data={TopStories[0]}
+          icon={require('../../assets/icons/gradient-play-ic.png')}
+          cardStyle={{
+            height: 250,
+            width: 380,
+            marginHorizontal: 10,
+            marginTop: 10,
+            borderRadius: 10,
+          }}
+          textStyle={styles.storyTitle}
         />
       </View>
-      <View style={{ height: 160, marginHorizontal: 10, marginTop: 10 }}>
+      <View style={{ marginHorizontal: 10, marginTop: 10}}>
         <Text
           style={[
             GlobalStyles.heading,
-            { textAlign: 'left', marginLeft: 10, fontSize: 22 },
+            {
+              textAlign: 'left',
+              marginLeft: 10,
+              fontSize: 22,
+              marginBottom: 10,
+            },
           ]}
         >
           Recently Played
@@ -156,12 +128,12 @@ export default function HomeContent({ name }) {
             <StoryCard
               data={item}
               cardStyle={{
-                height: 100,
-                width: 100,
+                height: 200,
+                width: 150,
                 marginHorizontal: 10,
                 marginTop: 5,
               }}
-              textStyle={[GlobalStyles.text, { fontSize: 12 }]}
+              textStyle={[GlobalStyles.text, { fontSize: 15 }]}
             />
           )}
         />

@@ -5,6 +5,9 @@ import Home from '../screens/home/HomeScreen';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { useCallback } from 'react';
 import { RootStackParamList } from './types';
+import SettingNavigation from '../screens/settings/SettingNavigation';
+
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 const USERS = [
@@ -20,6 +23,7 @@ export default function HomeTabs() {
   const route = useRoute<RouteProp<RootStackParamList, 'home'>>();
   const userId = route.params?.userId;
   const loggedUser = USERS.find(item => item.id === userId);
+  const insets = useSafeAreaInsets();
   const TempHome = useCallback(
     () => <Home name={loggedUser?.name} />,
     [loggedUser],
@@ -30,11 +34,12 @@ export default function HomeTabs() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: 'transparent',
+          backgroundColor: 'rgba(0,0,0,0.6)',
           position: 'absolute',
           elevation: 0,
           borderTopWidth: 1,
-          height: 70,
+          height: 60 + insets.bottom,
+          paddingBottom: insets.bottom,
           borderTopColor: '#fff',
         },
         tabBarShowLabel: true,
@@ -47,7 +52,6 @@ export default function HomeTabs() {
         tabBarInactiveTintColor: '#aaa',
       }}
     >
-      {/* HOME */}
       <Tab.Screen
         name="Home"
         component={TempHome}
@@ -64,7 +68,6 @@ export default function HomeTabs() {
         }}
       />
 
-      {/* SEARCH */}
       <Tab.Screen
         name="Search"
         component={Home}
@@ -81,7 +84,6 @@ export default function HomeTabs() {
         }}
       />
 
-      {/* COLLECTION */}
       <Tab.Screen
         name="Collection"
         component={Home}
@@ -98,17 +100,16 @@ export default function HomeTabs() {
         }}
       />
 
-      {/* YOU */}
       <Tab.Screen
         name="You"
-        component={Home}
+        component={SettingNavigation}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
               source={
                 loggedUser
                   ? loggedUser.avatar
-                  : require('../assets//images/user-ic.png')
+                  : require('../assets//images/user1.png')
               }
               style={{
                 borderWidth: focused ? 1 : 0,

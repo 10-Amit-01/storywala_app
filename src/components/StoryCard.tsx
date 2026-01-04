@@ -52,10 +52,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    marginTop: 10,
+    marginTop: 5,
   },
   image: {
-    height: '90%',
+    flex: 1,
     width: '100%',
     borderRadius: 10,
   },
