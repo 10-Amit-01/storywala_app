@@ -146,7 +146,7 @@ export default function Home({ name }: HomeProps) {
               <StoryCard
                 data={item}
                 cardStyle={{
-                  height: 200,
+                  height: 170,
                   width: 150,
                   marginHorizontal: 10,
                   marginTop: 5,
@@ -164,7 +164,7 @@ export default function Home({ name }: HomeProps) {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#1E1E1E',
     paddingTop: 30,
   },
   headingContainer: {

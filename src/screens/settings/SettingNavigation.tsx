@@ -1,8 +1,9 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Settings from './Settings';
 import Profile from './Profile';
+import { SettingsStackParamList } from './types';
 
-const stack = createNativeStackNavigator();
+const stack = createNativeStackNavigator<SettingsStackParamList>();
 
 export default function SettingNavigation() {
   return (

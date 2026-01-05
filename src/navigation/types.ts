@@ -1,17 +1,19 @@
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
   startingScreen: undefined;
   loginScreen: undefined;
+  signupScreen: undefined;
   registerScreen: undefined;
-  home: { userId?: number } | undefined;
+  bottomTabs: { userId?: number } | undefined;
+};
+
+export type BottomTabParamList = {
+  home: undefined;
+  search: undefined;
+  collection: undefined;
+  you: undefined;
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;
-
-declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
-  }
-}

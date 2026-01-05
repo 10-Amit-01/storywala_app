@@ -28,7 +28,10 @@ import StepOtp from './Step2';
 import StepSelectUser from './Step3';
 import OtpTimer from '../../components/Timer';
 import { GlobalStyles } from '../../styles/GlobalStyles';
-import { RootStackParamList } from '../../navigation/types';
+import {
+  RootStackParamList,
+  RootStackScreenProps,
+} from '../../navigation/types';
 import GradientButton from '../../components/ui/GradientButton';
 import CustomBackButton from '../../components/CustomBackButton';
 
@@ -145,14 +148,14 @@ const LoginScreen = () => {
     setCurrentStep(LoginStep.USER_SELECTION);
   };
 
-  const handleUserSelect = (user: any) => { 
+  const handleUserSelect = (user: any) => {
     if (user.isAddNew) {
       console.log('Add new user flow');
-      return; 
+      return;
     }
     setSelectedUser(user);
     console.log('Selected user:', user);
-    navigation.navigate('home');
+    navigation.navigate('bottomTabs');
   };
 
   const renderStepContent = () => {

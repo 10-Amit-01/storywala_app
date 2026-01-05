@@ -13,6 +13,7 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { SettingsScreenNavigationProp } from './types';
 
 interface SettingOptionProps {
   title: string;
@@ -37,7 +38,7 @@ function SettingOptions({ title, icon, isLast, onPress }: SettingOptionProps) {
 }
 
 export default function Settings() {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<SettingsScreenNavigationProp>();
   const headerHeight = useHeaderHeight();
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -49,7 +50,7 @@ export default function Settings() {
   useFocusEffect(
     useCallback(() => {
       const onBackPress = () => {
-        navigation.navigate('Home');
+        navigation.navigate('home');
         return true;
       };
 
@@ -121,7 +122,7 @@ export default function Settings() {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    backgroundColor: '#000000',
+    backgroundColor: '#1E1E1E',
   },
   scrollContent: {
     paddingHorizontal: 16,
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Outfit-Bold', // Assuming this font exists, typically used in modern apps. If not, will fallback or use GlobalStyles if I knew them better.
   },
   sectionContainer: {
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#262626',
     borderRadius: 12,
     overflow: 'hidden',
     marginBottom: 24,
@@ -163,7 +164,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#333',
   },
   logoutButton: {
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#262626',
     borderRadius: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',

@@ -1,9 +1,4 @@
-import {
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-} from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import {
   ImageBackground,
   StyleSheet,
@@ -14,9 +9,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useHeaderHeight } from '@react-navigation/elements';
@@ -199,7 +192,7 @@ export default function SignUp() {
                   <GradientButton
                     title="Done"
                     onPress={() => {
-                      navigation.navigate('home');
+                      navigation.navigate('bottomTabs');
                     }}
                     style={styles.button}
                     textStyle={styles.buttonText}

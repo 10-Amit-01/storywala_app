@@ -4,11 +4,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
-import { RootStackParamList } from './types';
+import { RootStackParamList, BottomTabParamList } from './types';
 import Home from '../screens/home/HomeScreen';
 import SettingNavigation from '../screens/settings/SettingNavigation';
+import CollectionNavigation from '../screens/collections/CollectionNavigation';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 const USERS = [
   { id: 1, name: 'Anush', avatar: require('../assets/images/user1.png') },
   {
@@ -19,7 +20,7 @@ const USERS = [
 ];
 
 export default function HomeTabs() {
-  const route = useRoute<RouteProp<RootStackParamList, 'home'>>();
+  const route = useRoute<RouteProp<RootStackParamList, 'bottomTabs'>>();
   const userId = route.params?.userId;
   const loggedUser = USERS.find(item => item.id === userId);
   const insets = useSafeAreaInsets();
@@ -53,7 +54,7 @@ export default function HomeTabs() {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="home"
         component={TempHome}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -69,7 +70,7 @@ export default function HomeTabs() {
       />
 
       <Tab.Screen
-        name="Search"
+        name="search"
         component={Home}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -85,8 +86,8 @@ export default function HomeTabs() {
       />
 
       <Tab.Screen
-        name="Collection"
-        component={Home}
+        name="collection"
+        component={CollectionNavigation}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
@@ -101,7 +102,7 @@ export default function HomeTabs() {
       />
 
       <Tab.Screen
-        name="You"
+        name="you"
         component={SettingNavigation}
         options={{
           tabBarIcon: ({ focused }) => (

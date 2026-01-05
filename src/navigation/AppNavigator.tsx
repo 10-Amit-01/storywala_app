@@ -38,7 +38,7 @@ export default function AppNavigator() {
           })}
         />
         <Stack.Screen
-          name="home"
+          name="bottomTabs"
           component={HomeTabs}
           options={() => ({
             headerShown: false,
