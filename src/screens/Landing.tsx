@@ -1,5 +1,11 @@
-import { useState } from 'react';
-import { ImageBackground, Text, View, StyleSheet } from 'react-native';
+import { useEffect, useState } from 'react';
+import {
+  ImageBackground,
+  Text,
+  View,
+  StyleSheet,
+  BackHandler,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -10,25 +16,34 @@ import GradientButton from '../components/ui/GradientButton';
 import { GlobalStyles } from '../styles/GlobalStyles';
 import { colors } from '../theme/colors';
 import OutlineGradientButton from '../components/ui/OutlineGradientButton';
-
-type RootStackList = {
-  loginScreen: undefined;
-  registerScreen: undefined;
-};
-
-type LandingScreenNavigationProp = NativeStackNavigationProp<RootStackList>;
+import { RootStackParamList } from '../navigation/types';
 
 export default function LandingScreen() {
   const [nextStep, setNextStep] = useState(true);
-  const navigation = useNavigation<LandingScreenNavigationProp>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const insets = useSafeAreaInsets();
 
   function handleLogin() {
-    navigation.navigate('loginScreen');
+    navigation.navigate('LoginScreen');
   }
   function handleRegister() {
-    navigation.navigate('registerScreen');
+    navigation.navigate('RegisterScreen');
   }
+
+  useEffect(() => {
+    const backAction = BackHandler.addEventListener('hardwareBackPress', () => {
+      if (!nextStep) {
+        setNextStep(true);
+      } else {
+        BackHandler.exitApp();
+      }
+      return true;
+    });
+    return () => {
+      backAction.remove();
+    };
+  }, [nextStep]);
 
   return (
     <View style={[styles.container, { paddingBottom: insets.bottom }]}>

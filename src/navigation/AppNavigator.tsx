@@ -15,12 +15,12 @@ export default function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="startingScreen"
+          name="StartingScreen"
           component={LandingScreen}
           options={{ headerShown: false, animation: 'fade_from_bottom' }}
         />
         <Stack.Screen
-          name="loginScreen"
+          name="LoginScreen"
           component={LoginScreen}
           options={() => ({
             title: '',
@@ -29,7 +29,7 @@ export default function AppNavigator() {
           })}
         />
         <Stack.Screen
-          name="registerScreen"
+          name="RegisterScreen"
           component={SignUp}
           options={() => ({
             title: '',
@@ -38,7 +38,7 @@ export default function AppNavigator() {
           })}
         />
         <Stack.Screen
-          name="bottomTabs"
+          name="BottomTabs"
           component={HomeTabs}
           options={() => ({
             headerShown: false,

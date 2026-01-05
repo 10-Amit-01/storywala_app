@@ -12,7 +12,9 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Swipeable } from 'react-native-gesture-handler';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
+
 import { CollectionScreenNavigationProp } from './types';
+import DeleteIcon from '../../components/DeleteIcon';
 
 const historyData = [
   {
@@ -48,26 +50,26 @@ export default function Favourites() {
   };
 
   useFocusEffect(
-      useCallback(() => {
-        const onBackPress = () => {
-          navigation.navigate('home');
-          return true;
-        };
-  
-        const subscription = BackHandler.addEventListener(
-          'hardwareBackPress',
-          onBackPress,
-        );
-  
-        return () => subscription.remove();
-      }, [navigation]),
-    );
+    useCallback(() => {
+      const onBackPress = () => {
+        navigation.navigate('Home');
+        return true;
+      };
+
+      const subscription = BackHandler.addEventListener(
+        'hardwareBackPress',
+        onBackPress,
+      );
+
+      return () => subscription.remove();
+    }, [navigation]),
+  );
 
   return (
     <View style={styles.rootContainer}>
       <View style={[{ paddingTop: headerHeight }]}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('favouritesList')}
+          onPress={() => navigation.navigate('FavouritesList')}
           style={{
             margin: 12,
             flexDirection: 'row',
@@ -111,7 +113,7 @@ export default function Favourites() {
                   onPress={() => handleDelete(item.item.id)}
                   style={styles.deleteButton}
                 >
-                  <MaterialIcons name="delete" size={30} color="#fff" />
+                  <DeleteIcon />
                 </TouchableOpacity>
               )}
             >
@@ -143,7 +145,7 @@ export default function Favourites() {
                     </Text>
                   </View>
                 </View>
-                <Text style={styles.text}>{item.item.time}</Text>
+                <Text style={[styles.text,{fontSize:12}]}>{item.item.time}</Text>
               </TouchableOpacity>
             </Swipeable>
             <View style={{ height: 1, backgroundColor: '#666' }} />
@@ -165,7 +167,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   deleteButton: {
-    backgroundColor: 'red',
+    backgroundColor: '#FF383C',
     justifyContent: 'center',
     alignItems: 'center',
     width: 80,

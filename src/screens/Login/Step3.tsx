@@ -7,10 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { RootStackParamList } from '../../navigation/types';
 import { colors } from '../../theme/colors';
 import { GlobalStyles } from '../../styles/GlobalStyles';
 import { theme } from '../../theme';
@@ -29,12 +26,10 @@ interface StepSelectUserProps {
   onUserSelect: (user: any) => void;
 }
 
-const StepSelectUser: React.FC<StepSelectUserProps> = () => {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+const StepSelectUser: React.FC<StepSelectUserProps> = ({ onUserSelect }) => {
 
   function handleSelectedUser(id: number) {
-    navigation.navigate('home', { userId: id });
+    onUserSelect(id);
   }
 
   return (

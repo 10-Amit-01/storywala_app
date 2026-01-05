@@ -1,18 +1,18 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
-  startingScreen: undefined;
-  loginScreen: undefined;
-  signupScreen: undefined;
-  registerScreen: undefined;
-  bottomTabs: { userId?: number } | undefined;
+  StartingScreen: undefined;
+  LoginScreen: undefined;
+  SignupScreen: undefined;
+  RegisterScreen: undefined;
+  BottomTabs: { userId?: number } | undefined;
 };
 
 export type BottomTabParamList = {
-  home: undefined;
-  search: undefined;
-  collection: undefined;
-  you: undefined;
+  Home: undefined;
+  Search: undefined;
+  Collection: undefined;
+  You: undefined;
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =

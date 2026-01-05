@@ -28,10 +28,7 @@ import StepOtp from './Step2';
 import StepSelectUser from './Step3';
 import OtpTimer from '../../components/Timer';
 import { GlobalStyles } from '../../styles/GlobalStyles';
-import {
-  RootStackParamList,
-  RootStackScreenProps,
-} from '../../navigation/types';
+import { RootStackParamList } from '../../navigation/types';
 import GradientButton from '../../components/ui/GradientButton';
 import CustomBackButton from '../../components/CustomBackButton';
 
@@ -155,7 +152,7 @@ const LoginScreen = () => {
     }
     setSelectedUser(user);
     console.log('Selected user:', user);
-    navigation.navigate('bottomTabs');
+    navigation.navigate('BottomTabs', { userId: user.id });
   };
 
   const renderStepContent = () => {
@@ -213,6 +210,10 @@ const LoginScreen = () => {
 
       if (currentStep === LoginStep.OTP_VERIFICATION) {
         setCurrentStep(LoginStep.PHONE_INPUT);
+        return true;
+      }
+      if(currentStep === LoginStep.PHONE_INPUT){
+        navigation.replace('StartingScreen');
         return true;
       }
       return false;

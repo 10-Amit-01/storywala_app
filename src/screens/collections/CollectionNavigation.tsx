@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Favourites from './Favourites';
 import FavouritesList from './FavouritesList';
 import { View } from 'react-native';
+
 import { CollectionStackParamList } from './types';
 
 const stack = createNativeStackNavigator<CollectionStackParamList>();
@@ -10,7 +11,7 @@ export default function CollectionNavigation() {
   return (
     <stack.Navigator>
       <stack.Screen
-        name="favourites"
+        name="Favourites"
         component={Favourites}
         options={{
           title: 'Your Favourites',
@@ -19,7 +20,7 @@ export default function CollectionNavigation() {
         }}
       />
       <stack.Screen
-        name="favouritesList"
+        name="FavouritesList"
         component={FavouritesList}
         options={{
           title: 'Your Favourites',

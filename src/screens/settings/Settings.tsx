@@ -10,9 +10,10 @@ import {
 } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { useHeaderHeight } from '@react-navigation/elements';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import { SettingsScreenNavigationProp } from './types';
 
 interface SettingOptionProps {
@@ -50,7 +51,7 @@ export default function Settings() {
   useFocusEffect(
     useCallback(() => {
       const onBackPress = () => {
-        navigation.navigate('home');
+        navigation.navigate('Home');
         return true;
       };
 
@@ -79,7 +80,7 @@ export default function Settings() {
             title="My Profile"
             icon={<Feather name="user" size={20} color="#fff" />}
             onPress={() => {
-              navigation.navigate('profile');
+              navigation.navigate('Profile');
             }}
           />
           <SettingOptions
@@ -107,7 +108,11 @@ export default function Settings() {
           />
         </View>
 
-        <TouchableOpacity activeOpacity={0.7} style={styles.logoutButton}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.logoutButton}
+          onPress={() => {navigation.replace('LoginScreen')}}
+        >
           <View style={styles.optionLeft}>
             <Feather name="log-out" size={20} color="#fff" />
             <Text style={styles.optionText}>Logout</Text>

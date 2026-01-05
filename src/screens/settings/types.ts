@@ -3,14 +3,15 @@ import { CompositeNavigationProp } from '@react-navigation/native';
 import {
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
+
 import { BottomTabParamList, RootStackParamList } from '../../navigation/types';
 
 export type SettingsStackParamList = {
-  settings: undefined;
-  profile: undefined;
+  Settings: undefined;
+  Profile: undefined;
 };
 export type SettingsScreenNavigationProp = CompositeNavigationProp<
-  NativeStackNavigationProp<SettingsStackParamList, 'settings'>,
+  NativeStackNavigationProp<SettingsStackParamList, 'Settings'>,
   CompositeNavigationProp<
     BottomTabNavigationProp<BottomTabParamList>,
     NativeStackNavigationProp<RootStackParamList>

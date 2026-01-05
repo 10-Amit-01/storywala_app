@@ -149,8 +149,16 @@ export default function Profile() {
             </Pressable>
 
             {/* GENDER MODAL */}
-            <Modal transparent visible={openGender} animationType="fade">
-              <View style={styles.modalOverlay}>
+            <Modal
+              transparent
+              visible={openGender}
+              animationType="fade"
+              onRequestClose={() => setOpenGender(false)}
+            >
+              <Pressable
+                style={styles.modalOverlay}
+                onPress={() => setOpenGender(false)}
+              >
                 <View style={styles.modalBox}>
                   {genderOptions.map(g => (
                     <Pressable
@@ -166,7 +174,7 @@ export default function Profile() {
                     </Pressable>
                   ))}
                 </View>
-              </View>
+              </Pressable>
             </Modal>
             <IconInput
               logo={require('../../assets/icons/music-wave-ic.png')}

@@ -115,7 +115,7 @@ const Step1: React.FC<UserDetails> = ({
 
       {/* GENDER MODAL */}
       <Modal transparent visible={openGender} animationType="fade">
-        <View style={styles.modalOverlay}>
+        <Pressable style={styles.modalOverlay} onPress={() => setOpenGender(false)}>
           <View style={styles.modalBox}>
             {genderOptions.map(g => (
               <Pressable
@@ -131,7 +131,7 @@ const Step1: React.FC<UserDetails> = ({
               </Pressable>
             ))}
           </View>
-        </View>
+        </Pressable>
       </Modal>
     </>
   );

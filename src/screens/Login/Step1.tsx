@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '100%',
-    marginTop: 10,
+    marginTop: 15,
   },
   inputContainer: {
     flexDirection: 'row',

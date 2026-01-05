@@ -151,7 +151,7 @@ export default function Home({ name }: HomeProps) {
                   marginHorizontal: 10,
                   marginTop: 5,
                 }}
-                textStyle={[GlobalStyles.text, { fontSize: 15 }]}
+                textStyle={[GlobalStyles.text, { fontSize: 14 }]}
               />
             )}
           />

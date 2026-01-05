@@ -192,7 +192,7 @@ export default function SignUp() {
                   <GradientButton
                     title="Done"
                     onPress={() => {
-                      navigation.navigate('bottomTabs');
+                      navigation.navigate('BottomTabs');
                     }}
                     style={styles.button}
                     textStyle={styles.buttonText}

@@ -1,8 +1,16 @@
-import { BackHandler, FlatList, Image, StyleSheet, Text, View } from 'react-native';
+import { useEffect } from 'react';
+import {
+  BackHandler,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
+
 import { CollectionScreenNavigationProp } from './types';
 const favouritesData = [
   {
@@ -46,14 +54,19 @@ export default function FavouritesList() {
     const bachAction = BackHandler.addEventListener('hardwareBackPress', () => {
       navigation.goBack();
       return true;
-    })
+    });
 
     return () => {
       bachAction.remove();
-    }
+    };
   }, []);
   return (
-    <View style={[styles.rootContainer, { paddingTop: headerHeight, paddingBottom: tabBarHeight }]}>
+    <View
+      style={[
+        styles.rootContainer,
+        { paddingTop: headerHeight, paddingBottom: tabBarHeight },
+      ]}
+    >
       <FlatList
         data={favouritesData}
         renderItem={({ item }) => (
@@ -85,7 +98,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: '400',
-    marginVertical:'auto',
-    marginLeft:20
+    marginVertical: 'auto',
+    marginLeft: 20,
   },
 });

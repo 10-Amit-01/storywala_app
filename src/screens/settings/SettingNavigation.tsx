@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import Settings from './Settings';
 import Profile from './Profile';
 import { SettingsStackParamList } from './types';
@@ -14,7 +15,7 @@ export default function SettingNavigation() {
       }}
     >
       <stack.Screen
-        name="settings"
+        name="Settings"
         component={Settings}
         options={{
           headerShown: true,
@@ -24,7 +25,7 @@ export default function SettingNavigation() {
         }}
       />
       <stack.Screen
-        name="profile"
+        name="Profile"
         component={Profile}
         options={{
           headerShown: true,

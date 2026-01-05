@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Image } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RouteProp, useRoute } from '@react-navigation/native';
@@ -20,8 +20,10 @@ const USERS = [
 ];
 
 export default function HomeTabs() {
-  const route = useRoute<RouteProp<RootStackParamList, 'bottomTabs'>>();
+  const route = useRoute<RouteProp<RootStackParamList, 'BottomTabs'>>();
   const userId = route.params?.userId;
+  console.log('userId', userId);
+
   const loggedUser = USERS.find(item => item.id === userId);
   const insets = useSafeAreaInsets();
   const TempHome = useCallback(
@@ -34,7 +36,7 @@ export default function HomeTabs() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: 'rgba(0,0,0,0.6)',
+          backgroundColor: '#000000',
           position: 'absolute',
           elevation: 0,
           borderTopWidth: 1,
@@ -54,11 +56,12 @@ export default function HomeTabs() {
       }}
     >
       <Tab.Screen
-        name="home"
+        name="Home"
         component={TempHome}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
+              style={style.image}
               source={
                 focused
                   ? require('../assets/icons/home-active-ic.png')
@@ -70,11 +73,12 @@ export default function HomeTabs() {
       />
 
       <Tab.Screen
-        name="search"
+        name="Search"
         component={Home}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
+              style={style.image}
               source={
                 focused
                   ? require('../assets/icons/search-active-ic.png')
@@ -86,11 +90,12 @@ export default function HomeTabs() {
       />
 
       <Tab.Screen
-        name="collection"
+        name="Collection"
         component={CollectionNavigation}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
+              style={style.image}
               source={
                 focused
                   ? require('../assets/icons/collection-active-ic.png')
@@ -102,7 +107,7 @@ export default function HomeTabs() {
       />
 
       <Tab.Screen
-        name="you"
+        name="You"
         component={SettingNavigation}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -118,6 +123,7 @@ export default function HomeTabs() {
                 borderRadius: 50,
                 height: 30,
                 width: 30,
+
               }}
             />
           ),
@@ -126,3 +132,10 @@ export default function HomeTabs() {
     </Tab.Navigator>
   );
 }
+
+const style = StyleSheet.create({
+  image: {
+    height: 20,
+    width: 20,
+  },
+});
