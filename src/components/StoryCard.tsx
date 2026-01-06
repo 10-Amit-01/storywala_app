@@ -9,6 +9,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import GradientPlay from '../assets/svgs/GradientPlay';
 
 type StoryCardData = {
   image: ImageSourcePropType;
@@ -17,14 +18,14 @@ type StoryCardData = {
 
 type StoryCardProps = {
   data: StoryCardData;
-  icon?: ImageSourcePropType;
+  icon?:Boolean;
   cardStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
 };
 
 const StoryCard = React.memo(function ({
   data,
-  icon,
+  icon = false,
   cardStyle,
   textStyle,
 }: StoryCardProps) {
@@ -33,7 +34,7 @@ const StoryCard = React.memo(function ({
       <Image source={data.image} style={styles.image} />
 
       <View style={styles.titleContainer}>
-        {icon && <Image source={icon} style={styles.logo} />}
+        {icon && <GradientPlay />}
         <Text style={textStyle} numberOfLines={1}>
           {data.heading}
         </Text>

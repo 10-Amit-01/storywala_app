@@ -96,6 +96,9 @@ export default function Settings() {
           <SettingOptions
             title="Payment & Invoice's"
             icon={<MaterialIcons name="receipt-long" size={20} color="#fff" />}
+            onPress={() => {
+              navigation.navigate('Payment');
+            }}
           />
           <SettingOptions
             title="Refer to Friend"
@@ -105,13 +108,18 @@ export default function Settings() {
             title="Terms & Condition"
             icon={<Feather name="file-text" size={20} color="#fff" />}
             isLast
+            onPress={() => {
+              navigation.navigate('TermsAndCondition');
+            }}
           />
         </View>
 
         <TouchableOpacity
           activeOpacity={0.7}
           style={styles.logoutButton}
-          onPress={() => {navigation.replace('LoginScreen')}}
+          onPress={() => {
+            navigation.replace('LoginScreen');
+          }}
         >
           <View style={styles.optionLeft}>
             <Feather name="log-out" size={20} color="#fff" />

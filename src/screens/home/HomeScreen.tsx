@@ -10,6 +10,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import Feather from 'react-native-vector-icons/Feather';
 
 import { theme } from '../../theme';
 import StoryCard from '../../components/StoryCard';
@@ -47,7 +48,7 @@ const TopStories = [
 ];
 
 export default function Home({ name }: HomeProps) {
-  const tabBarHeight = useBottomTabBarHeight();
+  // const tabBarHeight = useBottomTabBarHeight();
   useEffect(() => {
     const backAction = () => {
       BackHandler.exitApp();
@@ -72,7 +73,7 @@ export default function Home({ name }: HomeProps) {
       <ScrollView
         contentContainerStyle={[
           {
-            paddingBottom: tabBarHeight,
+            // paddingBottom: tabBarHeight,
           },
         ]}
         showsVerticalScrollIndicator={false}
@@ -83,12 +84,13 @@ export default function Home({ name }: HomeProps) {
           >
             Welcome back, {name ? name : 'User'}
           </Text>
-          <Image source={require('../../assets/icons/bell-ic.png')} />
+          <Feather name="bell" size={24} color="#fff" />
         </View>
 
         <View style={styles.searchOuterContainer}>
           <IconInput
-            logo={require('../../assets/icons/search-ic.png')}
+            childrenPos="left"
+            children={<Feather name="search" size={24} color="#fff" />}
             placeholder="Search.."
             style={styles.seachInput}
             containerStyle={styles.searchContainer}
@@ -114,7 +116,7 @@ export default function Home({ name }: HomeProps) {
           </Text>
           <StoryCard
             data={TopStories[0]}
-            icon={require('../../assets/icons/gradient-play-ic.png')}
+            icon={true}
             cardStyle={{
               height: 250,
               width: '95%',
@@ -154,6 +156,8 @@ export default function Home({ name }: HomeProps) {
                 textStyle={[GlobalStyles.text, { fontSize: 14 }]}
               />
             )}
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
           />
         </View>
       </ScrollView>

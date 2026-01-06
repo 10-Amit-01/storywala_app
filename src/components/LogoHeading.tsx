@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 40,
     fontFamily: theme.typography.fontExtraBold,
+    fontWeight: '800',
   },
 });
 

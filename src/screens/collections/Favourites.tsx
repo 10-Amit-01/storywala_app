@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import {
   BackHandler,
   FlatList,
@@ -44,6 +44,7 @@ export default function Favourites() {
   const headerHeight = useHeaderHeight();
   const [history, setHistory] = useState(historyData);
   const navigation = useNavigation<CollectionScreenNavigationProp>();
+  const swipeableRef = useRef<Swipeable>(null);
 
   const handleDelete = (id: number) => {
     setHistory(prev => prev.filter(item => item.id !== id));
@@ -105,52 +106,68 @@ export default function Favourites() {
       <FlatList
         data={history}
         keyExtractor={item => item.id.toString()}
-        renderItem={item => (
-          <>
-            <Swipeable
-              renderRightActions={() => (
-                <TouchableOpacity
-                  onPress={() => handleDelete(item.item.id)}
-                  style={styles.deleteButton}
-                >
-                  <DeleteIcon />
-                </TouchableOpacity>
-              )}
-            >
-              <TouchableOpacity
-                style={{
-                  margin: 12,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  backgroundColor: '#1E1E1E',
-                  height: 102,
+        renderItem={({ item }) => {
+          let rowRef: Swipeable | null = null;
+
+          return (
+            <>
+              <Swipeable
+                ref={ref => {
+                  rowRef = ref;
+                }}
+                renderRightActions={() => (
+                  <TouchableOpacity
+                    onPress={() => handleDelete(item.id)}
+                    style={styles.deleteButton}
+                  >
+                    <DeleteIcon />
+                  </TouchableOpacity>
+                )}
+                onSwipeableWillOpen={() => {
+                  if (swipeableRef.current && swipeableRef.current !== rowRef) {
+                    swipeableRef.current.close();
+                  }
+                  swipeableRef.current = rowRef;
+                }}
+                onSwipeableWillClose={() => {
+                  if (swipeableRef.current === rowRef) {
+                    swipeableRef.current = null;
+                  }
                 }}
               >
-                <View style={{ flexDirection: 'row' }}>
-                  <Image
-                    source={item.item.image}
-                    style={{ width: 80, height: 80, borderRadius: 10 }}
-                  />
-                  <View
-                    style={{
-                      flexDirection: 'column',
-                      marginLeft: 10,
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Text style={styles.text}>{item.item.title}</Text>
-                    <Text style={[styles.text, { fontSize: 14 }]}>
-                      {item.item.genre}
-                    </Text>
+                <TouchableOpacity
+                  style={{
+                    margin: 12,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    backgroundColor: '#1E1E1E',
+                    height: 102,
+                  }}
+                >
+                  <View style={{ flexDirection: 'row' }}>
+                    <Image
+                      source={item.image}
+                      style={{ width: 80, height: 80, borderRadius: 10 }}
+                    />
+                    <View style={{ marginLeft: 10, justifyContent: 'center' }}>
+                      <Text style={styles.text}>{item.title}</Text>
+                      <Text style={[styles.text, { fontSize: 14 }]}>
+                        {item.genre}
+                      </Text>
+                    </View>
                   </View>
-                </View>
-                <Text style={[styles.text,{fontSize:12}]}>{item.item.time}</Text>
-              </TouchableOpacity>
-            </Swipeable>
-            <View style={{ height: 1, backgroundColor: '#666' }} />
-          </>
-        )}
+
+                  <Text style={[styles.text, { fontSize: 12 }]}>
+                    {item.time}
+                  </Text>
+                </TouchableOpacity>
+              </Swipeable>
+
+              <View style={{ height: 1, backgroundColor: '#666' }} />
+            </>
+          );
+        }}
       />
     </View>
   );

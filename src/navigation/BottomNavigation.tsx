@@ -5,9 +5,15 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RouteProp, useRoute } from '@react-navigation/native';
 
 import { RootStackParamList, BottomTabParamList } from './types';
-import Home from '../screens/home/HomeScreen';
 import SettingNavigation from '../screens/settings/SettingNavigation';
 import CollectionNavigation from '../screens/collections/CollectionNavigation';
+import Home from '../screens/home/HomeScreen';
+import HomeActive from '../assets/svgs/HomeActive';
+import SearchActive from '../assets/svgs/SearchActive';
+import Search from '../assets/svgs/Search';
+import Collections from '../assets/svgs/Collections';
+import HomeInActive from '../assets/svgs/HomeInActive';
+import CollectionActive from '../assets/svgs/CollectionActive';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 const USERS = [
@@ -49,6 +55,7 @@ export default function HomeTabs() {
           fontSize: 12,
           marginBottom: 8,
           color: '#fff',
+          alignItems: 'center',
         },
         tabBarActiveTintColor: '#fff',
         tabBarInactiveTintColor: '#aaa',
@@ -59,16 +66,7 @@ export default function HomeTabs() {
         name="Home"
         component={TempHome}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <Image
-              style={style.image}
-              source={
-                focused
-                  ? require('../assets/icons/home-active-ic.png')
-                  : require('../assets/icons/home-inactive-ic.png')
-              }
-            />
-          ),
+          tabBarIcon: ({ focused }) => (focused ? <HomeActive /> : <HomeInActive />),
         }}
       />
 
@@ -76,16 +74,8 @@ export default function HomeTabs() {
         name="Search"
         component={Home}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <Image
-              style={style.image}
-              source={
-                focused
-                  ? require('../assets/icons/search-active-ic.png')
-                  : require('../assets/icons/search-inactive-ic.png')
-              }
-            />
-          ),
+          tabBarIcon: ({ focused }) =>
+            focused ? <SearchActive /> : <Search />,
         }}
       />
 
@@ -93,16 +83,8 @@ export default function HomeTabs() {
         name="Collection"
         component={CollectionNavigation}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <Image
-              style={style.image}
-              source={
-                focused
-                  ? require('../assets/icons/collection-active-ic.png')
-                  : require('../assets/icons/collection-inactive-ic.png')
-              }
-            />
-          ),
+          tabBarIcon: ({ focused }) =>
+            focused ? <CollectionActive /> : <Collections />,
         }}
       />
 
@@ -123,7 +105,6 @@ export default function HomeTabs() {
                 borderRadius: 50,
                 height: 30,
                 width: 30,
-
               }}
             />
           ),
@@ -132,10 +113,3 @@ export default function HomeTabs() {
     </Tab.Navigator>
   );
 }
-
-const style = StyleSheet.create({
-  image: {
-    height: 20,
-    width: 20,
-  },
-});

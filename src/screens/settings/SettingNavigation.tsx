@@ -2,7 +2,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Settings from './Settings';
 import Profile from './Profile';
+import Payment from './Payment';
+import PaymentHistory from './PaymentHistory';
 import { SettingsStackParamList } from './types';
+import TermsAndCondition from './TermsAndCondition';
 
 const stack = createNativeStackNavigator<SettingsStackParamList>();
 
@@ -30,6 +33,36 @@ export default function SettingNavigation() {
         options={{
           headerShown: true,
           title: 'My Profile',
+          headerTransparent: true,
+          headerStyle: { backgroundColor: 'transparent' },
+        }}
+      />
+      <stack.Screen
+        name="Payment"
+        component={Payment}
+        options={{
+          headerShown: true,
+          title: 'Membership Details',
+          headerTransparent: true,
+          headerStyle: { backgroundColor: 'transparent' },
+        }}
+      />
+      <stack.Screen
+        name="PaymentHistory"
+        component={PaymentHistory}
+        options={{
+          headerShown: true,
+          title: 'Payment History',
+          headerTransparent: true,
+          headerStyle: { backgroundColor: 'transparent' },
+        }}
+      />
+      <stack.Screen
+        name="TermsAndCondition"
+        component={TermsAndCondition}
+        options={{
+          headerShown: true,
+          title: 'Terms and Condition',
           headerTransparent: true,
           headerStyle: { backgroundColor: 'transparent' },
         }}

@@ -12,7 +12,7 @@ interface IconInputProps extends TextInputProps {
   iconPosition?: 'left' | 'right';
   childrenPos?: 'left' | 'right';
   children?: React.ReactNode;
-  logo: number;
+  logo?: number;
   containerStyle?: ViewStyle;
 }
 
