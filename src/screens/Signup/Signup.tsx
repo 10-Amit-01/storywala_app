@@ -90,7 +90,8 @@ export default function SignUp() {
         return true;
       }
 
-      return false;
+      navigation.goBack();
+      return true;
     };
 
     const subscription = BackHandler.addEventListener(

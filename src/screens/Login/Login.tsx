@@ -209,7 +209,7 @@ const LoginScreen = () => {
         setCurrentStep(LoginStep.PHONE_INPUT);
         return true;
       }
-      if(currentStep === LoginStep.PHONE_INPUT){
+      if (currentStep === LoginStep.PHONE_INPUT) {
         navigation.replace('StartingScreen');
         return true;
       }
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   cardWrapper: {
-    width: '90%',
+    width: '95%',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 20,

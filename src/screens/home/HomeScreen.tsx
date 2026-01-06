@@ -48,7 +48,7 @@ const TopStories = [
 ];
 
 export default function Home({ name }: HomeProps) {
-  // const tabBarHeight = useBottomTabBarHeight();
+  const tabBarHeight = useBottomTabBarHeight();
   useEffect(() => {
     const backAction = () => {
       BackHandler.exitApp();
@@ -73,7 +73,7 @@ export default function Home({ name }: HomeProps) {
       <ScrollView
         contentContainerStyle={[
           {
-            // paddingBottom: tabBarHeight,
+            paddingBottom: tabBarHeight,
           },
         ]}
         showsVerticalScrollIndicator={false}
