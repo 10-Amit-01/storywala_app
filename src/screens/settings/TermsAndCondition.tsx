@@ -19,7 +19,7 @@ export default function TermsAndCondition() {
         contentContainerStyle={styles.content}
       >
         <Text style={styles.title}>Terms & Conditions</Text>
-        <Text style={styles.updated}>Last Updated: [Add date]</Text>
+        <Text style={styles.updated}>Last Updated: 6 Jan, 2026</Text>
 
         <Text style={styles.paragraph}>
           Welcome to Storywala. By downloading, accessing, or using the
@@ -31,9 +31,9 @@ export default function TermsAndCondition() {
         <Text style={styles.heading}>1. About Storywala</Text>
         <Text style={styles.paragraph}>
           Storywala is a learning and storytelling mobile application designed
-          for children and users of all ages. We provide daily stories narrated
+          for kids and people of all ages. We provide daily stories narrated
           using AI technology, where stories may be personalized by including
-          the user’s name to create an immersive learning experience.
+          the user's name to create an immersive learning experience.
         </Text>
 
         <Text style={styles.heading}>2. Eligibility</Text>
@@ -167,8 +167,7 @@ export default function TermsAndCondition() {
           If you have any questions or concerns about these Terms & Conditions,
           please contact us:
         </Text>
-        <Text style={styles.paragraph}>Email: [your support email]</Text>
-        <Text style={styles.paragraph}>App Name: Storywala</Text>
+        <Text style={styles.paragraph}>Email: support@storywala.com</Text>
       </ScrollView>
     </View>
   );

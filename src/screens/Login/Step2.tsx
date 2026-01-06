@@ -104,13 +104,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    marginTop: 20,
-    gap: 5,
+    marginTop: 20
   },
   otpInput: {
-    width: 40,
-    height: 45,
-    borderRadius: 10,
+    margin: 2,
+    width: 46,
+    height: 50,
+    borderRadius: 15,
     textAlign: 'center',
     fontSize: 18,
     color: '#000',
@@ -120,8 +120,7 @@ const styles = StyleSheet.create({
     borderColor: 'red',
   },
   gradientBox: {
-    borderRadius: 10,
-    padding: 1,
+    borderRadius: 15
   },
 });
 

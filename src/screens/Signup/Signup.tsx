@@ -78,16 +78,6 @@ export default function SignUp() {
     });
   }, [navigation, step, headerRight, headerLeft]);
 
-  function onSubmit() {
-    console.log({
-      firstName,
-      lastName,
-      phone,
-      gender,
-      dob,
-    });
-  }
-
   useEffect(() => {
     const onBackPress = () => {
       if (step === 2) {
@@ -172,7 +162,6 @@ export default function SignUp() {
                     title="Confirm"
                     onPress={() => {
                       setStep(prevStep => prevStep + 1);
-                      onSubmit();
                     }}
                     style={styles.button}
                     textStyle={styles.buttonText}

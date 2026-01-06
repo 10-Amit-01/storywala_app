@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RouteProp, useRoute } from '@react-navigation/native';
@@ -28,7 +28,6 @@ const USERS = [
 export default function HomeTabs() {
   const route = useRoute<RouteProp<RootStackParamList, 'BottomTabs'>>();
   const userId = route.params?.userId;
-  console.log('userId', userId);
 
   const loggedUser = USERS.find(item => item.id === userId);
   const insets = useSafeAreaInsets();
@@ -48,7 +47,8 @@ export default function HomeTabs() {
           borderTopWidth: 1,
           height: 60 + insets.bottom,
           paddingBottom: insets.bottom,
-          borderTopColor: '#fff',
+          borderTopColor: '#525252',
+          paddingTop:5
         },
         tabBarShowLabel: true,
         tabBarLabelStyle: {
@@ -66,10 +66,21 @@ export default function HomeTabs() {
         name="Home"
         component={TempHome}
         options={{
-          tabBarIcon: ({ focused }) => (focused ? <HomeActive /> : <HomeInActive />),
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                // backgroundColor: 'red',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginLeft: 10,
+              }}
+            >
+              {focused ? <HomeActive /> : <HomeInActive />}
+            </View>
+          ),
         }}
       />
-
+ 
       <Tab.Screen
         name="Search"
         component={Home}
@@ -83,8 +94,18 @@ export default function HomeTabs() {
         name="Collection"
         component={CollectionNavigation}
         options={{
-          tabBarIcon: ({ focused }) =>
-            focused ? <CollectionActive /> : <Collections />,
+          tabBarIcon: ({ focused }) => (
+            <View
+              style={{
+                // backgroundColor: 'red',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginLeft: 10,
+              }}
+            >
+              {focused ? <CollectionActive /> : <Collections />}
+            </View>
+          ),
         }}
       />
 

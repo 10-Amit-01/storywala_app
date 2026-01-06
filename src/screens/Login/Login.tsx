@@ -139,7 +139,6 @@ const LoginScreen = () => {
       setError(true);
       return;
     }
-    console.log(otp);
     Keyboard.dismiss();
     setError(false);
     setCurrentStep(LoginStep.USER_SELECTION);
@@ -147,11 +146,9 @@ const LoginScreen = () => {
 
   const handleUserSelect = (user: any) => {
     if (user.isAddNew) {
-      console.log('Add new user flow');
       return;
     }
     setSelectedUser(user);
-    console.log('Selected user:', user);
     navigation.navigate('BottomTabs', { userId: user.id });
   };
 
