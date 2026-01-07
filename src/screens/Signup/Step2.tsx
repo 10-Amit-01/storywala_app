@@ -1,14 +1,24 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import Svg, {
+  Defs,
+  LinearGradient as SvgLinearGradient,
+  Stop,
+  Rect,
+} from 'react-native-svg';
 
 import PlanCard from '../../components/PlanCard';
 import { GlobalStyles } from '../../styles/GlobalStyles';
 import { theme } from '../../theme';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function Step2() {
   const [lifeSelected, setLifeSelected] = useState('3mon + 1mon');
   const [premiumSelected, setPremiumSelected] = useState('3mon + 1mon');
+
+  const PREMIUM_HEIGHT = 44; // height of premium box
+  const PREMIUM_RADIUS = 8; // border radius
+  const premiumGradientId = 'premiumBoxGradient';
 
   return (
     <>
@@ -26,34 +36,71 @@ export default function Step2() {
           { label: '6 months + 6 month free', value: '6mon + 6mon' },
         ]}
       >
-        <LinearGradient
-          colors={['rgba(33, 184, 232, 0.2)', 'rgba(52, 199, 89, 0.2)']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={styles.premiumBox}
+        {/* Premium Box replaced with SVG */}
+        <View
+          style={{
+            marginTop: 20,
+            marginRight: 8,
+            borderRadius: PREMIUM_RADIUS,
+          }}
         >
-          <View style={{ padding: 8 }}>
-            <LinearGradient
-              colors={[
-                theme.colors.gradients.primary[1],
-                theme.colors.gradients.primary[0],
-              ]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={styles.update}
-            >
-              <View
-                style={{
-                  paddingHorizontal: 10,
-                  paddingVertical: 4,
-                }}
+          <Svg
+            width="100%"
+            height={PREMIUM_HEIGHT}
+            viewBox={`0 0 300 ${PREMIUM_HEIGHT}`}
+            opacity={0.3}
+          >
+            <Defs>
+              <SvgLinearGradient
+                id={premiumGradientId}
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
               >
-                <Text style={styles.updateText}>Update</Text>
-              </View>
-            </LinearGradient>
+                <Stop offset="0%" stopColor="rgba(33, 184, 232, 0.2)" />
+                <Stop offset="100%" stopColor="rgba(52, 199, 89, 0.2)" />
+              </SvgLinearGradient>
+            </Defs>
+
+            {/* Background rectangle with gradient */}
+            <Rect
+              x={0}
+              y={0}
+              width="100%"
+              height={PREMIUM_HEIGHT}
+              rx={PREMIUM_RADIUS}
+              ry={PREMIUM_RADIUS}
+              fill={`url(#${premiumGradientId})`}
+            />
+          </Svg>
+
+          {/* Content inside premium box */}
+          <View
+            style={[
+              styles.premiumBox,
+              { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
+            ]}
+          >
+            <View style={{ padding: 8 }}>
+              <LinearGradient
+                colors={[
+                  theme.colors.gradients.primary[1],
+                  theme.colors.gradients.primary[0],
+                ]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.update}
+              >
+                <View style={{ paddingHorizontal: 10, paddingVertical: 4 }}>
+                  <Text style={styles.updateText}>Update</Text>
+                </View>
+              </LinearGradient>
+            </View>
+            <Text style={styles.premiumText}>Premium Only</Text>
           </View>
-          <Text style={styles.premiumText}>Premium Only</Text>
-        </LinearGradient>
+        </View>
+
         <Text style={styles.infoText}>You can change plans anytime.</Text>
       </PlanCard>
 
@@ -83,6 +130,7 @@ export default function Step2() {
           ))}
         </View>
       </PlanCard>
+
       <PlanCard
         title="Premium Plan"
         price="₹299/mo"
@@ -140,13 +188,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     gap: 5,
-    marginTop: 20,
-    marginRight: 8,
   },
   update: { borderRadius: 8 },
   updateText: { color: '#fff', fontFamily: theme.typography.fontRegular },
-  updateButton: { borderRadius: 8 },
-  updateButtonText: { color: '#fff', fontSize: 15, paddingHorizontal: 18 },
   premiumText: { color: '#718096', fontSize: 14, marginLeft: 4 },
   infoText: { color: '#737373', marginTop: 10 },
 });

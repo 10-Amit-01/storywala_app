@@ -1,81 +1,86 @@
 import React from 'react';
-import {
-  Pressable,
-  View,
-  ViewStyle,
-  TextStyle,
-  StyleSheet,
-} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-
-import { colors } from '../../theme/colors';
-import GradientText from './GradientText';
+import { Pressable, StyleSheet, ViewStyle } from 'react-native';
+import Svg, { Defs, LinearGradient, Stop, Rect, Text as SvgText } from 'react-native-svg';
 import { theme } from '../../theme';
 
-interface OutlineGradientButtonProps {
+interface NeonOutlineButtonProps {
   title: string;
   onPress: () => void;
   style?: ViewStyle;
-  textStyle?: TextStyle;
   disabled?: boolean;
-  borderWidth?: number;
 }
 
-const OutlineGradientButton = React.memo(function ({
+const HEIGHT = 44;
+const RADIUS = 12;
+const STROKE = 2;
+
+const NeonOutlineButton = React.memo(function ({
   title,
   onPress,
   style,
-  textStyle,
   disabled = false,
-}: OutlineGradientButtonProps) {
-  const gradientColors = disabled
-    ? ['#777', '#555']
-    : [colors.gradients.primary[1], colors.gradients.primary[0]];
+}: NeonOutlineButtonProps) {
+  const id = React.useId();
 
   return (
     <Pressable
       onPress={onPress}
       disabled={disabled}
-      style={[styles.rootContainer, style]}
-      android_ripple={{ color: '#ffffff40', foreground: true }}
+      style={[styles.wrapper, style]}
     >
-      <LinearGradient
-        colors={gradientColors}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={styles.outerContainer}
+      <Svg
+        width="100%"
+        height={HEIGHT}
+        viewBox={`0 0 300 ${HEIGHT}`}
+        preserveAspectRatio="none"
       >
-        <View style={styles.innerContainer}>
-          <GradientText
-            colors={[colors.gradients.primary[0], colors.gradients.primary[1]]}
-            style={[styles.btnText, textStyle,]}
-          >
-            {title}
-          </GradientText>
-        </View>
-      </LinearGradient>
+        <Defs>
+          <LinearGradient id={id} x1="0%" y1="0%" x2="100%" y2="0%">
+            <Stop offset="0%" stopColor="#00FFD1" />
+            <Stop offset="100%" stopColor="#00A3FF" />
+          </LinearGradient>
+
+          <LinearGradient id={`${id}-text`} x1="0%" y1="0%" x2="100%" y2="0%">
+            <Stop offset="0%" stopColor="#7CFFF4" />
+            <Stop offset="100%" stopColor="#4FC3FF" />
+          </LinearGradient>
+        </Defs>
+
+        {/* BORDER */}
+        <Rect
+          x={STROKE / 2}
+          y={STROKE / 2}
+          width={300 - STROKE}
+          height={HEIGHT - STROKE}
+          rx={RADIUS}
+          ry={RADIUS}
+          fill="none"
+          stroke={`url(#${id})`}
+          strokeWidth={STROKE}
+        />
+
+        {/* TEXT */}
+        <SvgText
+          x="150"
+          y={HEIGHT / 2 + 6} // vertical center adjustment
+          textAnchor="middle"
+          fontSize="16"
+          fontWeight="300"
+          fill={`url(#${id}-text)`}
+          fontFamily={theme.typography.fontRegular}
+        >
+          {title}
+        </SvgText>
+      </Svg>
     </Pressable>
   );
 });
 
 const styles = StyleSheet.create({
-  rootContainer: { borderRadius: 16, overflow: 'hidden' },
-  outerContainer: {
-    // padding: 2,
-    borderRadius: 16,
-  },
-  innerContainer: {
-    backgroundColor: '#000',
-    borderRadius: 14,
-    margin:2,
-    padding:12,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  btnText: {
-    fontFamily: theme.typography.fontRegular,
-    fontSize: theme.typography.sizes.md,
+  wrapper: {
+    alignSelf: 'center',
+    width: '90%',
   },
 });
 
-export default OutlineGradientButton;
+export default NeonOutlineButton;
