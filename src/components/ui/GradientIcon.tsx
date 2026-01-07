@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageProps } from 'react-native';
+import { Image, ImageProps, View } from 'react-native';
 import MaskedView from '@react-native-masked-view/masked-view';
 import {
   LinearGradient,
@@ -22,7 +22,9 @@ const GradientIcon = React.memo((props: GradientIconProps) => {
         end={props.end}
         locations={props.locations}
       >
-        <Image {...props} />
+        <View>
+          <Image {...props} />
+        </View>
       </LinearGradient>
     </MaskedView>
   );

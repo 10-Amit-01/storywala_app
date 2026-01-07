@@ -2,8 +2,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LandingScreen from '../screens/Landing';
-import LoginScreen from '../screens/login/Login';
-import SignUp from '../screens/signup/Signup';
+import LoginScreen from '../screens/Login/Login';
+import SignUp from '../screens/Signup/Signup';
 import HomeTabs from './BottomNavigation';
 
 import { RootStackParamList } from './types';
@@ -36,6 +36,7 @@ export default function AppNavigator() {
             headerTransparent: true,
             animation: 'fade_from_bottom',
           })}
+          
         />
         <Stack.Screen
           name="BottomTabs"

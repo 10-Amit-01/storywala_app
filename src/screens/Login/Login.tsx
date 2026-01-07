@@ -31,6 +31,7 @@ import { GlobalStyles } from '../../styles/GlobalStyles';
 import { RootStackParamList } from '../../navigation/types';
 import GradientButton from '../../components/ui/GradientButton';
 import CustomBackButton from '../../components/CustomBackButton';
+import IosHeader from '../../components/IosHeader';
 
 enum LoginStep {
   PHONE_INPUT = 'PHONE_INPUT',
@@ -61,7 +62,7 @@ const LoginScreen = () => {
             handleResetOtp();
             setCurrentStep(LoginStep.PHONE_INPUT);
           } else if (currentStep === LoginStep.PHONE_INPUT) {
-            navigation.goBack();
+            navigation.navigate('StartingScreen');
           }
         }}
       />
@@ -76,6 +77,7 @@ const LoginScreen = () => {
         currentStep !== LoginStep.USER_SELECTION
           ? headerLeftComponent
           : () => <View />,
+      header: () => Platform.OS === 'ios' && <IosHeader left={currentStep !== LoginStep.USER_SELECTION && headerLeftComponent}/>
     });
   }, [currentStep, navigation, headerLeftComponent]);
 

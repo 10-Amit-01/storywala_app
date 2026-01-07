@@ -44,7 +44,7 @@ export default function Settings() {
   useLayoutEffect(() => {
     navigation.setOptions({
       title: 'Settings',
-      headerLeft: () => <View />,
+      headerLeft: () => null,
     });
   }, [navigation]);
 

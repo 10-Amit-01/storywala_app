@@ -19,7 +19,7 @@ import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import IconInput from '../../components/ui/IconInput';
 import { GlobalStyles } from '../../styles/GlobalStyles';
 import DateInputNative from '../../components/DateInput';
-import { genderOptions } from '../signup/Step1';
+import { genderOptions } from '../Signup/Step1';
 import GradientButton from '../../components/ui/GradientButton';
 
 export default function Profile() {

@@ -32,17 +32,26 @@ export default function Step2() {
           end={{ x: 1, y: 0 }}
           style={styles.premiumBox}
         >
-          <LinearGradient
-            colors={[
-              theme.colors.gradients.primary[1],
-              theme.colors.gradients.primary[0],
-            ]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={styles.update}
-          >
-            <Text style={styles.updateText}>Update</Text>
-          </LinearGradient>
+          <View style={{ padding: 8 }}>
+            <LinearGradient
+              colors={[
+                theme.colors.gradients.primary[1],
+                theme.colors.gradients.primary[0],
+              ]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.update}
+            >
+              <View
+                style={{
+                  paddingHorizontal: 10,
+                  paddingVertical: 4,
+                }}
+              >
+                <Text style={styles.updateText}>Update</Text>
+              </View>
+            </LinearGradient>
+          </View>
           <Text style={styles.premiumText}>Premium Only</Text>
         </LinearGradient>
         <Text style={styles.infoText}>You can change plans anytime.</Text>
@@ -128,14 +137,13 @@ const styles = StyleSheet.create({
   },
   premiumBox: {
     flexDirection: 'row',
-    padding: 8,
     borderRadius: 8,
     alignItems: 'center',
     gap: 5,
     marginTop: 20,
     marginRight: 8,
   },
-  update: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 8 },
+  update: { borderRadius: 8 },
   updateText: { color: '#fff', fontFamily: theme.typography.fontRegular },
   updateButton: { borderRadius: 8 },
   updateButtonText: { color: '#fff', fontSize: 15, paddingHorizontal: 18 },

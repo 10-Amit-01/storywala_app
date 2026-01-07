@@ -1,11 +1,11 @@
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, Pressable, StyleSheet, TouchableOpacity } from 'react-native';
 
 const CustomBackButton = React.memo(({ onPress }: { onPress: () => void }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <Pressable onPress={onPress} style={styles.container}>
       <Image source={require('../assets/icons/gradient-left-chevron-ic.png')} />
-    </TouchableOpacity>
+    </Pressable>
   );
 });
 

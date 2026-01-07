@@ -8,6 +8,7 @@ import {
   BackHandler,
   TouchableOpacity,
   Image,
+  Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -17,6 +18,7 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import { RootStackParamList } from '../../navigation/types';
 import GradientButton from '../../components/ui/GradientButton';
 import CustomBackButton from '../../components/CustomBackButton';
+import IosHeader from '../../components/IosHeader';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
@@ -36,7 +38,7 @@ export default function SignUp() {
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const scrollViewRef = useRef<ScrollView>(null);
 
-  const headerLeft = useCallback(
+  const HeaderLeft = useCallback(
     () => (
       <CustomBackButton
         onPress={() => {
@@ -53,7 +55,7 @@ export default function SignUp() {
     [step, setStep, navigation],
   );
 
-  const headerRight = useCallback(
+  const HeaderRight = useCallback(
     () => (
       <TouchableOpacity
         style={styles.headerRight}
@@ -73,10 +75,14 @@ export default function SignUp() {
 
   useEffect(() => {
     navigation.setOptions({
-      headerLeft: step !== 1 ? headerLeft : () => <View />,
-      headerRight: step === 2 ? headerRight : undefined,
+      headerLeft: step !== 1 ? HeaderLeft : () => <View />,
+      headerRight: step === 2 ? HeaderRight : undefined,
+      header: () =>
+        Platform.OS === 'ios' && (
+          <IosHeader left={step > 1 && HeaderLeft} right={step ===2 && HeaderRight} />
+        ),
     });
-  }, [navigation, step, headerRight, headerLeft]);
+  }, [navigation, step, HeaderRight, HeaderLeft]);
 
   useEffect(() => {
     const onBackPress = () => {

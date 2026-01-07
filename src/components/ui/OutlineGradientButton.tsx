@@ -48,7 +48,7 @@ const OutlineGradientButton = React.memo(function ({
         <View style={styles.innerContainer}>
           <GradientText
             colors={[colors.gradients.primary[0], colors.gradients.primary[1]]}
-            style={[styles.btnText, textStyle]}
+            style={[styles.btnText, textStyle,]}
           >
             {title}
           </GradientText>
@@ -61,14 +61,14 @@ const OutlineGradientButton = React.memo(function ({
 const styles = StyleSheet.create({
   rootContainer: { borderRadius: 16, overflow: 'hidden' },
   outerContainer: {
-    padding: 2,
+    // padding: 2,
     borderRadius: 16,
   },
   innerContainer: {
     backgroundColor: '#000',
     borderRadius: 14,
-    paddingVertical: 12,
-    paddingHorizontal: 14,
+    margin:2,
+    padding:12,
     alignItems: 'center',
     justifyContent: 'center',
   },

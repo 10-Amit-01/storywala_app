@@ -26,7 +26,7 @@ export default function CollectionNavigation() {
           title: 'Your Favourites',
           headerTransparent: true,
           headerTitleStyle: { color: '#fff' },
-          headerLeft: () => <View/>
+          headerLeft: () => null
         }}
       />
       

@@ -5,6 +5,7 @@ import {
   TextStyle,
   Pressable,
   StyleSheet,
+  View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -42,12 +43,14 @@ const GradientButton = React.memo(function ({
         }
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        style={[
+        
+      >
+        <View style={[
           { ...styles.gradientButton },
           disabled && { ...GlobalStyles.disabled },
-        ]}
-      >
-        <Text style={[styles.text, textStyle]}>{title}</Text>
+        ]}>
+          <Text style={[styles.text, textStyle]}>{title}</Text>
+        </View>
       </LinearGradient>
     </Pressable>
   );

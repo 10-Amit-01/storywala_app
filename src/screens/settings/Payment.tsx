@@ -123,8 +123,6 @@ const styles = StyleSheet.create({
   },
   memberBadge: {
     backgroundColor: '#00D66C',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     alignSelf: 'flex-start',
@@ -134,6 +132,8 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 12,
     fontWeight: '600',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
   },
   planHeader: {
     flexDirection: 'row',
